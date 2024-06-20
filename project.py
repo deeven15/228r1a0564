@@ -1,32 +1,34 @@
-from tkinter import *
-a=Tk()
-a.geometry("1000x1000")
-a.title("student registration form")
-n=Label(a,text="name",bg="pink",fg="red")
-n.grid(row=0,column=0)
-e=Entry(a)
-e.grid(row=0,column=1)
-a1=Label(a,text="password")
-a1.grid(row=1,column=0)
-e1=Entry(a)
-e1.grid(row=1,column=1)
-a2=Label(a,text="Branch")
-a2.grid(row=2,column=0)
-cb=Checkbutton(a,text="cse")
-cb.grid(row=3,column=0)
-cb2=Checkbutton(a,text="aiml")
-cb2.grid(row=4,column=0)
-a3=Label(a,text="Programming languages known")
-a3.grid(row=5,column=1)
-lb=Listbox(a,height=3)
-lb.insert(1,"c")
-lb.insert(2,"java")
-lb.insert(3,"python")
-lb.grid(row=6,column=1)
-rb=Radiobutton(a,text="male",value=1)
-rb.grid(row=7,column=0)
-rb2=Radiobutton(a,text="female",value=2)
-rb2.grid(row=8,column=0)
-b=Button(a,text="submit")
-b.grid(row=9,column=3)
-a.mainloop()
+import tkinter as tk
+from tkinter import messagebox
+
+
+def submit_action():
+    name = name_entry.get()
+    roll_no = roll_no_entry.get()
+    department = department_entry.get()
+
+    if name and roll_no and department:
+        messagebox.showinfo("Submission", f"Name: {name}\nRoll No: {roll_no}\nDepartment: {department}")
+    else:
+        messagebox.showwarning("Incomplete Information", "Please fill out all fields")
+
+
+root = tk.Tk()
+root.title("Login Page")
+
+tk.Label(root, text="Name:").grid(row=0, column=0, padx=10, pady=10)
+name_entry = tk.Entry(root)
+name_entry.grid(row=0, column=1, padx=10, pady=10)
+
+tk.Label(root, text="Roll No:").grid(row=1, column=0, padx=10, pady=10)
+roll_no_entry = tk.Entry(root)
+roll_no_entry.grid(row=1, column=1, padx=10, pady=10)
+
+tk.Label(root, text="Department:").grid(row=2, column=0, padx=10, pady=10)
+department_entry = tk.Entry(root)
+department_entry.grid(row=2, column=1, padx=10, pady=10)
+
+submit_button = tk.Button(root, text="Submit", command=submit_action)
+submit_button.grid(row=3, columnspan=2, pady=10)
+
+root.mainloop()
